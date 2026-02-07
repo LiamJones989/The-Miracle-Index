@@ -8,149 +8,264 @@
 <style>
     body {
         margin: 0;
-        font-family: Arial, sans-serif;
-        background: #f4f4f4;
-        color: #222;
+        font-family: "Segoe UI", Arial, sans-serif;
+        color: #1f1f1f;
+        background: url('background.jpg') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .overlay {
+        background: rgba(245, 245, 245, 0.94);
+        min-height: 100vh;
     }
 
     header {
-        background: #2b2b2b;
-        color: white;
-        padding: 20px;
+        padding: 60px 20px 40px;
         text-align: center;
     }
 
+    header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+        letter-spacing: 1px;
+    }
+
+    header p {
+        max-width: 700px;
+        margin: 12px auto 0;
+        font-size: 1.1rem;
+        color: #555;
+    }
+
     nav {
-        background: #1f1f1f;
-        padding: 10px;
+        position: sticky;
+        top: 0;
+        background: #ffffff;
+        border-bottom: 1px solid #ddd;
+        padding: 10px 0;
+        z-index: 1000;
         text-align: center;
     }
 
     nav a {
-        color: white;
-        margin: 0 10px;
+        margin: 0 12px;
         text-decoration: none;
-        font-weight: bold;
+        color: #333;
+        font-weight: 600;
+    }
+
+    nav a:hover {
+        text-decoration: underline;
     }
 
     section {
-        padding: 40px 20px;
-        max-width: 1100px;
+        max-width: 1200px;
         margin: auto;
+        padding: 60px 20px;
     }
 
     h2 {
-        border-bottom: 2px solid #ccc;
-        padding-bottom: 5px;
+        margin-bottom: 10px;
+        font-size: 1.6rem;
+        border-left: 4px solid #444;
+        padding-left: 10px;
+    }
+
+    .section-desc {
+        color: #555;
+        max-width: 800px;
+        margin-bottom: 25px;
     }
 
     .grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-        margin-top: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 24px;
     }
 
     .card {
         background: white;
         padding: 20px;
-        border-radius: 6px;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        min-height: 140px;
+        border-radius: 10px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 24px rgba(0,0,0,0.12);
     }
 
     footer {
-        background: #2b2b2b;
-        color: white;
         text-align: center;
-        padding: 20px;
-        margin-top: 40px;
+        padding: 40px 20px 60px;
+        color: #666;
+        font-size: 0.9rem;
+    }
+
+    .label {
+        font-weight: 600;
     }
 </style>
 </head>
 
 <body>
+<div class="overlay">
 
 <header>
     <h1>Catholic Miracles Archive</h1>
-    <p>A growing catalog of miracles throughout Catholic history</p>
+    <p>
+        A curated, educational catalog documenting miracles associated with the Catholic Church across history and around the world.
+    </p>
 </header>
 
 <nav>
-    <a href="#categories">Categories</a>
-    <a href="#regions">Regions</a>
-    <a href="#timeline">Timeline</a>
-    <a href="#catalog">Miracle Catalog</a>
-    <a href="#about">About</a>
+    <a href="#eucharistic">Eucharistic</a>
+    <a href="#healing">Healing</a>
+    <a href="#marian">Marian</a>
+    <a href="#canonization">Canonization</a>
+    <a href="#incorrupt">Incorrupt Saints</a>
+    <a href="#other">Other</a>
 </nav>
 
-<section id="categories">
-    <h2>Browse by Category</h2>
-    <div class="grid">
-        <div class="card">Eucharistic Miracles</div>
-        <div class="card">Healing Miracles</div>
-        <div class="card">Marian Apparitions</div>
-        <div class="card">Canonization Miracles</div>
-        <div class="card">Incorrupt Saints</div>
-        <div class="card">Other Miracles</div>
-    </div>
-</section>
-
-<section id="regions">
-    <h2>Browse by Region</h2>
-    <div class="grid">
-        <div class="card">Europe</div>
-        <div class="card">North America</div>
-        <div class="card">South America</div>
-        <div class="card">Africa</div>
-        <div class="card">Asia</div>
-        <div class="card">Worldwide</div>
-    </div>
-</section>
-
-<section id="timeline">
-    <h2>Browse by Time Period</h2>
-    <div class="grid">
-        <div class="card">Early Church (0–500)</div>
-        <div class="card">Middle Ages (500–1500)</div>
-        <div class="card">Early Modern (1500–1800)</div>
-        <div class="card">Modern (1800–1950)</div>
-        <div class="card">Contemporary (1950–Present)</div>
-    </div>
-</section>
-
-<section id="catalog">
-    <h2>Miracle Catalog</h2>
+<!-- ================= EUCHARISTIC MIRACLES ================= -->
+<section id="eucharistic">
+    <h2>Eucharistic Miracles</h2>
+    <p class="section-desc">Documented events associated with the Holy Eucharist.</p>
 
     <div class="grid">
 
-        <!-- COPY THIS BLOCK TO ADD A MIRACLE -->
+        <!-- ===== ADD EUCHARISTIC MIRACLES BELOW THIS LINE ===== -->
+
+        <!-- COPY THIS TEMPLATE FOR EACH ENTRY -->
         <div class="card">
-            <strong>Miracle Title</strong><br>
-            Location: <br>
-            Year: <br>
-            Category: <br>
-            Status: <br>
-            <p>Description goes here.</p>
+            <strong>Miracle Title</strong><br><br>
+            <span class="label">Location:</span> <br>
+            <span class="label">Year:</span> <br>
+            <span class="label">Status:</span> <br>
+            <p>Short description goes here.</p>
         </div>
-        <!-- END MIRACLE BLOCK -->
+        <!-- ===== END TEMPLATE ===== -->
 
-        <!-- ADD MORE MIRACLES BELOW BY COPYING THE BLOCK ABOVE -->
+        <!-- ===== ADD MORE EUCHARISTIC MIRACLES HERE ===== -->
 
     </div>
 </section>
 
-<section id="about">
-    <h2>About This Project</h2>
-    <p>
-        This website is an educational project documenting miracles associated with the Catholic Church.
-        Entries may include Church-recognized miracles, historical accounts, and reported events.
-    </p>
+<!-- ================= HEALING MIRACLES ================= -->
+<section id="healing">
+    <h2>Healing Miracles</h2>
+    <p class="section-desc">Accounts of medically unexplained healings attributed to divine intervention.</p>
+
+    <div class="grid">
+
+        <!-- ===== ADD HEALING MIRACLES BELOW THIS LINE ===== -->
+
+        <div class="card">
+            <strong>Miracle Title</strong><br><br>
+            <span class="label">Location:</span> <br>
+            <span class="label">Year:</span> <br>
+            <span class="label">Status:</span> <br>
+            <p>Short description goes here.</p>
+        </div>
+
+        <!-- ===== ADD MORE HEALING MIRACLES HERE ===== -->
+
+    </div>
+</section>
+
+<!-- ================= MARIAN MIRACLES ================= -->
+<section id="marian">
+    <h2>Marian Apparitions & Miracles</h2>
+    <p class="section-desc">Events involving reported apparitions of the Blessed Virgin Mary.</p>
+
+    <div class="grid">
+
+        <!-- ===== ADD MARIAN MIRACLES BELOW THIS LINE ===== -->
+
+        <div class="card">
+            <strong>Miracle Title</strong><br><br>
+            <span class="label">Location:</span> <br>
+            <span class="label">Year:</span> <br>
+            <span class="label">Status:</span> <br>
+            <p>Short description goes here.</p>
+        </div>
+
+        <!-- ===== ADD MORE MARIAN MIRACLES HERE ===== -->
+
+    </div>
+</section>
+
+<!-- ================= CANONIZATION MIRACLES ================= -->
+<section id="canonization">
+    <h2>Canonization Miracles</h2>
+    <p class="section-desc">Miracles recognized during the canonization process of saints.</p>
+
+    <div class="grid">
+
+        <!-- ===== ADD CANONIZATION MIRACLES BELOW THIS LINE ===== -->
+
+        <div class="card">
+            <strong>Miracle Title</strong><br><br>
+            <span class="label">Location:</span> <br>
+            <span class="label">Year:</span> <br>
+            <span class="label">Status:</span> <br>
+            <p>Short description goes here.</p>
+        </div>
+
+        <!-- ===== ADD MORE CANONIZATION MIRACLES HERE ===== -->
+
+    </div>
+</section>
+
+<!-- ================= INCORRUPT SAINTS ================= -->
+<section id="incorrupt">
+    <h2>Incorrupt Saints</h2>
+    <p class="section-desc">Saints whose bodies are reported to have resisted natural decay.</p>
+
+    <div class="grid">
+
+        <!-- ===== ADD INCORRUPT SAINTS BELOW THIS LINE ===== -->
+
+        <div class="card">
+            <strong>Saint Name</strong><br><br>
+            <span class="label">Location:</span> <br>
+            <span class="label">Year:</span> <br>
+            <span class="label">Status:</span> <br>
+            <p>Short description goes here.</p>
+        </div>
+
+        <!-- ===== ADD MORE INCORRUPT SAINTS HERE ===== -->
+
+    </div>
+</section>
+
+<!-- ================= OTHER MIRACLES ================= -->
+<section id="other">
+    <h2>Other Miracles</h2>
+    <p class="section-desc">Additional documented miraculous events not classified elsewhere.</p>
+
+    <div class="grid">
+
+        <!-- ===== ADD OTHER MIRACLES BELOW THIS LINE ===== -->
+
+        <div class="card">
+            <strong>Miracle Title</strong><br><br>
+            <span class="label">Location:</span> <br>
+            <span class="label">Year:</span> <br>
+            <span class="label">Status:</span> <br>
+            <p>Short description goes here.</p>
+        </div>
+
+        <!-- ===== ADD MORE OTHER MIRACLES HERE ===== -->
+
+    </div>
 </section>
 
 <footer>
-    <p>© 2026 Catholic Miracles Archive</p>
+    <p>© 2026 Catholic Miracles Archive · Educational Project</p>
 </footer>
 
+</div>
 </body>
 </html>
