@@ -15,7 +15,7 @@
     }
 
     .overlay {
-        background: rgba(245, 245, 245, 0.82);
+        background: rgba(245, 245, 245, 0.78);
         min-height: 100vh;
     }
 
@@ -27,28 +27,50 @@
     header h1 {
         margin: 0;
         font-size: 2.5rem;
-        letter-spacing: 1px;
     }
 
     header p {
         max-width: 700px;
         margin: 12px auto 0;
-        font-size: 1.1rem;
+        font-size: 1.05rem;
         color: #555;
     }
 
     .search-container {
-        text-align: center;
-        margin: 20px 20px 10px;
+        max-width: 600px;
+        margin: 20px auto 10px;
+        position: relative;
+        padding: 0 20px;
     }
 
-    .search-container input {
-        width: 90%;
-        max-width: 420px;
+    #searchInput {
+        width: 100%;
         padding: 12px 14px;
         border-radius: 8px;
         border: 1px solid #ccc;
         font-size: 1rem;
+    }
+
+    .search-results {
+        position: absolute;
+        width: calc(100% - 40px);
+        background: white;
+        border-radius: 0 0 8px 8px;
+        box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+        max-height: 260px;
+        overflow-y: auto;
+        z-index: 2000;
+        display: none;
+    }
+
+    .search-results div {
+        padding: 10px 14px;
+        cursor: pointer;
+        border-bottom: 1px solid #eee;
+    }
+
+    .search-results div:hover {
+        background: #f0f0f0;
     }
 
     nav {
@@ -68,30 +90,37 @@
         font-weight: 600;
     }
 
-    nav a:hover {
-        text-decoration: underline;
-    }
-
     section {
         max-width: 1200px;
         margin: auto;
-        padding: 60px 20px;
+        padding: 30px 20px;
     }
 
-    h2 {
-        margin-bottom: 10px;
-        font-size: 1.6rem;
+    .section-header {
+        cursor: pointer;
+        user-select: none;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .section-header span {
+        font-size: 1.4rem;
+        font-weight: 600;
         border-left: 4px solid #444;
         padding-left: 10px;
     }
 
-    .section-desc {
-        color: #555;
-        max-width: 800px;
-        margin-bottom: 25px;
+    .toggle {
+        font-size: 1.2rem;
+        font-weight: bold;
+        width: 20px;
+        text-align: center;
     }
 
     .grid {
+        display: none; /* collapsed by default */
+        margin-top: 20px;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
         gap: 24px;
@@ -102,12 +131,6 @@
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-        transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    .card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 10px 24px rgba(0,0,0,0.12);
     }
 
     footer {
@@ -128,13 +151,12 @@
 
 <header>
     <h1>Catholic Miracles Archive</h1>
-    <p>
-        A curated, educational catalog documenting miracles associated with the Catholic Church across history and around the world.
-    </p>
+    <p>A curated, educational catalog documenting miracles associated with the Catholic Church.</p>
 </header>
 
 <div class="search-container">
-    <input type="text" id="searchInput" placeholder="Search miracles by title, location, or description...">
+    <input type="text" id="searchInput" placeholder="Search miracles...">
+    <div id="searchResults" class="search-results"></div>
 </div>
 
 <nav>
@@ -146,117 +168,121 @@
     <a href="#other">Other</a>
 </nav>
 
-<!-- ================= EUCHARISTIC MIRACLES ================= -->
+<!-- EUCHARISTIC -->
 <section id="eucharistic">
-    <h2>Eucharistic Miracles</h2>
-    <p class="section-desc">Documented events associated with the Holy Eucharist.</p>
+    <div class="section-header" onclick="toggleSection(this)">
+        <div class="toggle">+</div>
+        <span>Eucharistic Miracles</span>
+    </div>
     <div class="grid">
 
-        <!-- ===== ADD EUCHARISTIC MIRACLES BELOW THIS LINE ===== -->
-
-        <div class="card">
+        <!-- ADD EUCHARISTIC MIRACLES HERE -->
+        <div class="card" data-title="Miracle Title">
             <strong>Miracle Title</strong><br><br>
             <span class="label">Location:</span> <br>
             <span class="label">Year:</span> <br>
             <span class="label">Status:</span> <br>
-            <p>Short description goes here.</p>
+            <p>Description goes here.</p>
         </div>
-
-        <!-- ===== ADD MORE EUCHARISTIC MIRACLES HERE ===== -->
 
     </div>
 </section>
 
-<!-- ================= HEALING MIRACLES ================= -->
+<!-- HEALING -->
 <section id="healing">
-    <h2>Healing Miracles</h2>
-    <p class="section-desc">Accounts of medically unexplained healings attributed to divine intervention.</p>
+    <div class="section-header" onclick="toggleSection(this)">
+        <div class="toggle">+</div>
+        <span>Healing Miracles</span>
+    </div>
     <div class="grid">
 
-        <!-- ===== ADD HEALING MIRACLES BELOW THIS LINE ===== -->
-
-        <div class="card">
+        <!-- ADD HEALING MIRACLES HERE -->
+        <div class="card" data-title="Miracle Title">
             <strong>Miracle Title</strong><br><br>
             <span class="label">Location:</span> <br>
             <span class="label">Year:</span> <br>
             <span class="label">Status:</span> <br>
-            <p>Short description goes here.</p>
+            <p>Description goes here.</p>
         </div>
 
     </div>
 </section>
 
-<!-- ================= MARIAN MIRACLES ================= -->
+<!-- MARIAN -->
 <section id="marian">
-    <h2>Marian Apparitions & Miracles</h2>
-    <p class="section-desc">Events involving reported apparitions of the Blessed Virgin Mary.</p>
+    <div class="section-header" onclick="toggleSection(this)">
+        <div class="toggle">+</div>
+        <span>Marian Apparitions & Miracles</span>
+    </div>
     <div class="grid">
 
-        <!-- ===== ADD MARIAN MIRACLES BELOW THIS LINE ===== -->
-
-        <div class="card">
+        <!-- ADD MARIAN MIRACLES HERE -->
+        <div class="card" data-title="Miracle Title">
             <strong>Miracle Title</strong><br><br>
             <span class="label">Location:</span> <br>
             <span class="label">Year:</span> <br>
             <span class="label">Status:</span> <br>
-            <p>Short description goes here.</p>
+            <p>Description goes here.</p>
         </div>
 
     </div>
 </section>
 
-<!-- ================= CANONIZATION MIRACLES ================= -->
+<!-- CANONIZATION -->
 <section id="canonization">
-    <h2>Canonization Miracles</h2>
-    <p class="section-desc">Miracles recognized during the canonization process of saints.</p>
+    <div class="section-header" onclick="toggleSection(this)">
+        <div class="toggle">+</div>
+        <span>Canonization Miracles</span>
+    </div>
     <div class="grid">
 
-        <!-- ===== ADD CANONIZATION MIRACLES BELOW THIS LINE ===== -->
-
-        <div class="card">
+        <!-- ADD CANONIZATION MIRACLES HERE -->
+        <div class="card" data-title="Miracle Title">
             <strong>Miracle Title</strong><br><br>
             <span class="label">Location:</span> <br>
             <span class="label">Year:</span> <br>
             <span class="label">Status:</span> <br>
-            <p>Short description goes here.</p>
+            <p>Description goes here.</p>
         </div>
 
     </div>
 </section>
 
-<!-- ================= INCORRUPT SAINTS ================= -->
+<!-- INCORRUPT -->
 <section id="incorrupt">
-    <h2>Incorrupt Saints</h2>
-    <p class="section-desc">Saints whose bodies are reported to have resisted natural decay.</p>
+    <div class="section-header" onclick="toggleSection(this)">
+        <div class="toggle">+</div>
+        <span>Incorrupt Saints</span>
+    </div>
     <div class="grid">
 
-        <!-- ===== ADD INCORRUPT SAINTS BELOW THIS LINE ===== -->
-
-        <div class="card">
+        <!-- ADD INCORRUPT SAINTS HERE -->
+        <div class="card" data-title="Saint Name">
             <strong>Saint Name</strong><br><br>
             <span class="label">Location:</span> <br>
             <span class="label">Year:</span> <br>
             <span class="label">Status:</span> <br>
-            <p>Short description goes here.</p>
+            <p>Description goes here.</p>
         </div>
 
     </div>
 </section>
 
-<!-- ================= OTHER MIRACLES ================= -->
+<!-- OTHER -->
 <section id="other">
-    <h2>Other Miracles</h2>
-    <p class="section-desc">Additional documented miraculous events not classified elsewhere.</p>
+    <div class="section-header" onclick="toggleSection(this)">
+        <div class="toggle">+</div>
+        <span>Other Miracles</span>
+    </div>
     <div class="grid">
 
-        <!-- ===== ADD OTHER MIRACLES BELOW THIS LINE ===== -->
-
-        <div class="card">
+        <!-- ADD OTHER MIRACLES HERE -->
+        <div class="card" data-title="Miracle Title">
             <strong>Miracle Title</strong><br><br>
             <span class="label">Location:</span> <br>
             <span class="label">Year:</span> <br>
             <span class="label">Status:</span> <br>
-            <p>Short description goes here.</p>
+            <p>Description goes here.</p>
         </div>
 
     </div>
@@ -269,21 +295,53 @@
 </div>
 
 <script>
-    const searchInput = document.getElementById('searchInput');
+function toggleSection(header) {
+    const grid = header.nextElementSibling;
+    const toggle = header.querySelector('.toggle');
+    const isOpen = grid.style.display === "grid";
 
-    searchInput.addEventListener('input', function () {
-        const filter = searchInput.value.toLowerCase();
-        const cards = document.querySelectorAll('.card');
+    grid.style.display = isOpen ? "none" : "grid";
+    toggle.textContent = isOpen ? "+" : "−";
+}
 
-        cards.forEach(card => {
-            const text = card.innerText.toLowerCase();
-            if (text.includes(filter)) {
-                card.style.display = "block";
-            } else {
-                card.style.display = "none";
-            }
-        });
+const searchInput = document.getElementById("searchInput");
+const searchResults = document.getElementById("searchResults");
+
+searchInput.addEventListener("input", () => {
+    const query = searchInput.value.toLowerCase().trim();
+    searchResults.innerHTML = "";
+
+    if (!query) {
+        searchResults.style.display = "none";
+        return;
+    }
+
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        const title = card.getAttribute("data-title").toLowerCase();
+        if (title.includes(query)) {
+            const result = document.createElement("div");
+            result.textContent = card.getAttribute("data-title");
+            result.onclick = () => {
+                const section = card.closest("section");
+                const header = section.querySelector(".section-header");
+                const grid = section.querySelector(".grid");
+                const toggle = header.querySelector(".toggle");
+
+                grid.style.display = "grid";
+                toggle.textContent = "−";
+
+                card.scrollIntoView({ behavior: "smooth", block: "center" });
+                searchResults.style.display = "none";
+                searchInput.value = "";
+            };
+            searchResults.appendChild(result);
+        }
     });
+
+    searchResults.style.display = searchResults.children.length ? "block" : "none";
+});
 </script>
 
 </body>
