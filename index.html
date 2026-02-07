@@ -15,12 +15,12 @@
     }
 
     .overlay {
-        background: rgba(245, 245, 245, 0.94);
+        background: rgba(245, 245, 245, 0.82);
         min-height: 100vh;
     }
 
     header {
-        padding: 60px 20px 40px;
+        padding: 60px 20px 30px;
         text-align: center;
     }
 
@@ -35,6 +35,20 @@
         margin: 12px auto 0;
         font-size: 1.1rem;
         color: #555;
+    }
+
+    .search-container {
+        text-align: center;
+        margin: 20px 20px 10px;
+    }
+
+    .search-container input {
+        width: 90%;
+        max-width: 420px;
+        padding: 12px 14px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 1rem;
     }
 
     nav {
@@ -119,6 +133,10 @@
     </p>
 </header>
 
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search miracles by title, location, or description...">
+</div>
+
 <nav>
     <a href="#eucharistic">Eucharistic</a>
     <a href="#healing">Healing</a>
@@ -132,12 +150,10 @@
 <section id="eucharistic">
     <h2>Eucharistic Miracles</h2>
     <p class="section-desc">Documented events associated with the Holy Eucharist.</p>
-
     <div class="grid">
 
         <!-- ===== ADD EUCHARISTIC MIRACLES BELOW THIS LINE ===== -->
 
-        <!-- COPY THIS TEMPLATE FOR EACH ENTRY -->
         <div class="card">
             <strong>Miracle Title</strong><br><br>
             <span class="label">Location:</span> <br>
@@ -145,7 +161,6 @@
             <span class="label">Status:</span> <br>
             <p>Short description goes here.</p>
         </div>
-        <!-- ===== END TEMPLATE ===== -->
 
         <!-- ===== ADD MORE EUCHARISTIC MIRACLES HERE ===== -->
 
@@ -156,7 +171,6 @@
 <section id="healing">
     <h2>Healing Miracles</h2>
     <p class="section-desc">Accounts of medically unexplained healings attributed to divine intervention.</p>
-
     <div class="grid">
 
         <!-- ===== ADD HEALING MIRACLES BELOW THIS LINE ===== -->
@@ -169,8 +183,6 @@
             <p>Short description goes here.</p>
         </div>
 
-        <!-- ===== ADD MORE HEALING MIRACLES HERE ===== -->
-
     </div>
 </section>
 
@@ -178,7 +190,6 @@
 <section id="marian">
     <h2>Marian Apparitions & Miracles</h2>
     <p class="section-desc">Events involving reported apparitions of the Blessed Virgin Mary.</p>
-
     <div class="grid">
 
         <!-- ===== ADD MARIAN MIRACLES BELOW THIS LINE ===== -->
@@ -191,8 +202,6 @@
             <p>Short description goes here.</p>
         </div>
 
-        <!-- ===== ADD MORE MARIAN MIRACLES HERE ===== -->
-
     </div>
 </section>
 
@@ -200,7 +209,6 @@
 <section id="canonization">
     <h2>Canonization Miracles</h2>
     <p class="section-desc">Miracles recognized during the canonization process of saints.</p>
-
     <div class="grid">
 
         <!-- ===== ADD CANONIZATION MIRACLES BELOW THIS LINE ===== -->
@@ -213,8 +221,6 @@
             <p>Short description goes here.</p>
         </div>
 
-        <!-- ===== ADD MORE CANONIZATION MIRACLES HERE ===== -->
-
     </div>
 </section>
 
@@ -222,7 +228,6 @@
 <section id="incorrupt">
     <h2>Incorrupt Saints</h2>
     <p class="section-desc">Saints whose bodies are reported to have resisted natural decay.</p>
-
     <div class="grid">
 
         <!-- ===== ADD INCORRUPT SAINTS BELOW THIS LINE ===== -->
@@ -235,8 +240,6 @@
             <p>Short description goes here.</p>
         </div>
 
-        <!-- ===== ADD MORE INCORRUPT SAINTS HERE ===== -->
-
     </div>
 </section>
 
@@ -244,7 +247,6 @@
 <section id="other">
     <h2>Other Miracles</h2>
     <p class="section-desc">Additional documented miraculous events not classified elsewhere.</p>
-
     <div class="grid">
 
         <!-- ===== ADD OTHER MIRACLES BELOW THIS LINE ===== -->
@@ -257,8 +259,6 @@
             <p>Short description goes here.</p>
         </div>
 
-        <!-- ===== ADD MORE OTHER MIRACLES HERE ===== -->
-
     </div>
 </section>
 
@@ -267,5 +267,24 @@
 </footer>
 
 </div>
+
+<script>
+    const searchInput = document.getElementById('searchInput');
+
+    searchInput.addEventListener('input', function () {
+        const filter = searchInput.value.toLowerCase();
+        const cards = document.querySelectorAll('.card');
+
+        cards.forEach(card => {
+            const text = card.innerText.toLowerCase();
+            if (text.includes(filter)) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    });
+</script>
+
 </body>
 </html>
